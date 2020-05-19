@@ -18,25 +18,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/roles">Roles</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" onClick="addbot()">Add the bot</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://status.werewolf-utopium.tk">Status</a>
-      </li>
-      <% if(user){ %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="devmenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Developers</a>
-        <div class="dropdown-menu" aria-labelledby="devmenu">
-          <a href="https://glitch.com/edit/#!/werewolf-utopium" class="nav-link">Open Editor</a>
-          <a href="/json.sqlite" class="nav-link">Download DB</a>
-          <a href="/restart" class="nav-link">Restart Server</a>
-        </div>
-      </li>
-      <% } %>
       
     </ul>
     <div class="navbar-nav justify-content-between" style="margin-right: 20px;">
@@ -45,17 +26,8 @@
         <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
       </div> -->
       <% if(user){ %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="usermenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="https://cdn.discordapp.com/avatars/<%- user.id %>/<%- user.avatar %>.png" class="roundimg" style="max-height:1.5em"> 
+        <img src="https://cdn.discordapp.com/avatars/<%- user.id %>/<%- user.avatar %>.png" class="roundimg" style="max-height:1.5em"> 
         <%- user.nickname || user.username %>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="usermenu">
-          <a class="dropdown-item" href="/profile/<%- user.id %>">View Profile</a>
-          <a class="dropdown-item" href="/info">Log raw user data</a>
-          <a class="dropdown-item" href="/logout">Logout</a>
-        </div>
-      </li>
       <% } else { %>
       <a class="nav-item nav-link" href="/login">Login</a>
       <% } %>

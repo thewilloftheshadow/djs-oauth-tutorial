@@ -2,14 +2,12 @@
 const express = require("express"),
   app = express(),
   ejs = require("ejs"),
-  path = require("path"),
   Strategy = require("passport-discord").Strategy,
   session = require("express-session"),
   passport = require("passport"),
   Discord = require("discord.js"),
   fs = require("fs"),
   moment = require("moment"),
-  fetch = require("node-fetch"),
   db = require("quick.db")
 
 //Require our config file
@@ -61,7 +59,7 @@ function useToken(token) {
 }
 
 //Send everything in the public folder as a static page so we don't have to do each one ourselves
-app.use(express.static(path.join(__dirname, "/public")))
+app.use(express.static(__dirname + "/public"))
 //Parse cookies
 app.use(require("cookie-parser")())
 //Parse the body of a form
@@ -138,7 +136,7 @@ client.on("ready", async () => {
 
   
   app.get("/", (req, res) => {
-    let pass = { user: req.user || null }
+    let pass = { user: req.user || null, client: client }
     res.render(__dirname + "/views/index.ejs", pass)
   })
 
